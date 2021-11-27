@@ -15,7 +15,7 @@ DATABASES = {
         'NAME': 'hermes',
         'USER': 'hermes',
         'PASSWORD': '%%DB_PASSWORD%%',
-        'HOST': 'host.docker.internal',
+        'HOST': '127.0.0.1',
         'PORT': '3306',
     },
 }
