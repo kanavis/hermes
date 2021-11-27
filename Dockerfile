@@ -7,5 +7,4 @@ RUN cat /app/hermes/settings.production.template.py | \
     tr '%%DJANGO_SECRET%%' "A{sicjha8shc(UABsv8a7pbsv89bA(SVc8bna98vnbpa9n8scpansc" | \
     tr '%%DB_PASSWORD%%' "3n9Km2PS9aowaaVa" \
     > /app/hermes/settings.py
-RUN ls
-CMD manage.py runserver -p 5000
+CMD ./manage.py runserver -p 5000
