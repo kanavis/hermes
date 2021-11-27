@@ -1,14 +1,6 @@
-version: "3.9"
+version: "3.3"
 services:
   web:
     build: .
     ports:
       - "5000:5000"
-    secrets:
-      - db_password
-      - django_secret
-secrets:
-  db_password:
-    file: /home/kanavis/secrets/hermes/db.txt
-  django_secret:
-    file: /home/kanavis/secrets/hermes/django.txt
