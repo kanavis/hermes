@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "a96b3853c9503ac6e612eb80b31aab5270a98dcb472c6836a70dfe171d642a01"
+            "sha256": "47cd85c56a2b0c462e8de27e09dc7d376909759912c8363cf0ea9bec78ec77ae"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -48,6 +48,14 @@
             "index": "pypi",
             "version": "==1.0.7"
         },
+        "gunicorn": {
+            "hashes": [
+                "sha256:9dcc4547dbb1cb284accfb15ab5667a0e5d1881cc443e0677b4882a4067a807e",
+                "sha256:e0a968b5ba15f8a328fdfd7ab1fcb5af4470c28aaf7e55df02a99bc13138e6e8"
+            ],
+            "index": "pypi",
+            "version": "==20.1.0"
+        },
         "mysqlclient": {
             "hashes": [
                 "sha256:02c8826e6add9b20f4cb12dcf016485f7b1d6e30356a1204d05431867a1b3947",
@@ -65,6 +73,14 @@
                 "sha256:acad2d8b20a1af07d4e4c9d2e9285c5ed9104354062f275f3fcd88dcef4f1326"
             ],
             "version": "==2021.3"
+        },
+        "setuptools": {
+            "hashes": [
+                "sha256:10635f160e9e71546b883e337646567156a02808ecc0e7fafc12021deabf205e",
+                "sha256:da27016d4b3b89cc9b672d93597520e44afa3f87a9aac32d3f084f37fa667ce7"
+            ],
+            "markers": "python_version >= '3.6'",
+            "version": "==59.3.0"
         },
         "soupsieve": {
             "hashes": [
