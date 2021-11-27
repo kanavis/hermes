@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="row p-4 pb-0 pe-lg-0 pt-lg-4 align-items-center">
+    <div class="col-md-10 mx-auto col-lg-3">
+      <h4>Расходы за {{ month.full_name }}</h4>
+      <a class="link-secondary" href="/">Назад к месяцам</a>
+    </div>
+  </div>
+
+  <div class="row mt-4 p-2 pb-0 pe-lg-0 pt-lg-4 rounded-3 border">
+    <div class="col-md-10 col-lg-4">
+      <p class="fw-bold">Название</p>
+    </div>
+    <div class="col-md-10 col-lg-4">
+      <p class="fw-bold">Категория</p>
+    </div>
+    <div class="col-md-10 col-lg-4">
+      <p class="fw-bold">Сумма</p>
+    </div>
+  </div>
+
+  {% for spending in spendings %}
+    <div class="row p-2 pb-0 pe-lg-0 pt-lg-4 rounded-3 border">
+      <div class="col-md-10 col-lg-4">
+        <p>{{ spending.name }}</p>
+      </div>
+      <div class="col-md-10 col-lg-4">
+        <p>{{ spending.category.name }}</p>
+      </div>
+      <div class="col-md-10 col-lg-4">
+        <p>{{ spending.value }}</p>
+      </div>
+    </div>
+  {% endfor %}
+{% endblock %}

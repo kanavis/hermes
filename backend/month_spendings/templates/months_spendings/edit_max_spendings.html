@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="row p-4 pb-0 pe-lg-0 pt-lg-4 align-items-center mb-4 mt-1">
+    <div class="col-md-10 mx-auto col-lg-3">
+      <h4>Поменять максимальную сумму расходов за {{ month.full_name }}</h4>
+      <a class="link-secondary" href="/">Назад к месяцам</a>
+    </div>
+  </div>
+
+   <form method="POST">
+     {% csrf_token %}
+     <div class="row p-4 pb-0 pe-lg-0 pt-lg-4 align-items-center mb-4 mt-1">
+      <div class="col mx-auto col-lg-3">
+        <input
+            type="number" class="form-control" placeholder="Сумма" aria-label="Название"
+            name="max_spending"
+            value="{{ month.max_spending }}"
+            autofocus
+        >
+      </div>
+     </div>
+     <div class="row p-4 pb-0 pe-lg-0 align-items-center mb-4 mt-1">
+       <div class="col mx-auto col-lg-3">
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+      </div>
+     </div>
+   </form>
+{% endblock %}

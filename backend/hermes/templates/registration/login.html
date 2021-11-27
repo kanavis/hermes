@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+  <div class="row p-4 pb-0 pe-lg-0 pt-lg-4 mb-3 align-items-center">
+    <div class="col-md-10 mx-auto col-lg-3">
+    <h3>Войдите, пожалуйста</h3>
+    </div>
+  </div>
+  <div class="col-md-10 mx-auto col-lg-3">
+    <form class="p-4 p-md-5 border rounded-3 bg-light" method="POST" action="{% url 'login' %}">
+      {% csrf_token %}
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="id_username" name="username" placeholder="Логин" autofocus >
+        <label for="id_username">Логин</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="password" class="form-control" id="id_password" name="password" placeholder="Пароль">
+        <label for="id_password">Пароль</label>
+      </div>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Войти</button>
+      {% if form.errors %}
+        <hr>
+        {% for error in form.errors %}
+          <p><small class="text-danger">Ошибка: {{ error }}</small></p>
+        {% endfor %}
+      {% endif %}
+    </form>
+  </div>
+{% endblock %}

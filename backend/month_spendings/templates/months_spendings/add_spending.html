@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="row p-4 pb-0 pe-lg-0 pt-lg-4 align-items-center mb-4 mt-1">
+    <div class="col-md-10 mx-auto col-lg-3">
+      <h4>Добавить расходы за {{ month.full_name }}</h4>
+      <a class="link-secondary" href="/">Назад к месяцам</a>
+    </div>
+  </div>
+
+  <form method="POST">
+    {% csrf_token %}
+    {% for i in form_gen %}
+      <div class="row mb-4">
+        <div class="col">
+          <input
+              type="text" class="form-control" placeholder="Название" aria-label="Название"
+              name="name"
+              {% if i == 0 %}autofocus{% endif %}
+          >
+        </div>
+        <div class="col">
+          <select class="form-select" aria-label="Категория" name="category">
+            {% for category in categories %}
+              <option
+                  {% if category.id == 1 %}selected{% endif %}
+                  value="{{ category.id }}"
+              >{{ category.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col">
+          <input type="number" class="form-control" placeholder="Сумма" aria-label="Сумма" name="value">
+        </div>
+      </div>
+    {% endfor %}
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Сохранить</button>
+    </div>
+  </form>
+{% endblock %}
