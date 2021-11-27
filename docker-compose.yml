@@ -6,7 +6,7 @@ services:
       - "5000:5000"
     secrets:
       - db_password
-      -
+      - django_secret
 secrets:
   db_password:
     file: /home/kanavis/secrets/hermes/db.txt
