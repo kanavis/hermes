@@ -45,6 +45,7 @@ def show_month_spendings(request: HttpRequest, year: int, month: int):
     context = dict(
         month=month,
         spendings=month.spending_set.all(),
+        total_spending=sum(s.value for s in month.spending_set.all()),
     )
     return render(request, 'months_spendings/spendings.html', context)
 
