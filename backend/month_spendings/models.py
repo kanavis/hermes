@@ -12,7 +12,19 @@ class Month(models.Model):
     max_spending = models.IntegerField(null=False, default=0)
 
     @property
-    def spent(self) -> int:
+    def spent_regular(self) -> int:
+        return sum(s.value for s in self.spending_set.filter(
+            category__is_regular=True,
+        ))
+
+    @property
+    def spent_non_regular(self) -> int:
+        return sum(s.value for s in self.spending_set.filter(
+            category__is_regular=False,
+        ))
+
+    @property
+    def spent_total(self):
         return sum(s.value for s in self.spending_set.all())
 
     @property
@@ -43,7 +55,7 @@ class Month(models.Model):
 
     @property
     def balance(self):
-        return self.max_spending - self.spent
+        return self.max_spending - self.spent_non_regular
 
     @classmethod
     def make_current(cls, max_spending):
@@ -56,6 +68,7 @@ class Month(models.Model):
 
 class SpendCategory(models.Model):
     name = models.CharField(max_length=255, null=False)
+    is_regular = models.BooleanField(null=False, default=False)
 
 
 class Spending(models.Model):

@@ -18,7 +18,10 @@ def redir_message(url, message):
 @login_required
 def show_months(request: HttpRequest):
     q = Month.objects.all()
-    months = list(q.prefetch_related('spending_set').order_by('-year', '-month')[:5])
+    months = list(
+        q.prefetch_related('spending_set', 'spending_set__category')
+        .order_by('-year', '-month')[:5]
+    )
     if not (months and months[0].is_current):
         max_spending = months[0].max_spending if months else MAX_SPENDING_DEFAULT
         curr_month = Month.make_current(max_spending=max_spending)
@@ -45,7 +48,6 @@ def show_month_spendings(request: HttpRequest, year: int, month: int):
     context = dict(
         month=month,
         spendings=month.spending_set.all(),
-        total_spending=sum(s.value for s in month.spending_set.all()),
     )
     return render(request, 'months_spendings/spendings.html', context)
 
