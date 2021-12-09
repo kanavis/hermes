@@ -76,3 +76,4 @@ class Spending(models.Model):
     month = models.ForeignKey(Month, on_delete=P, null=False)
     category = models.ForeignKey(SpendCategory, on_delete=P, null=False)
     value = models.IntegerField(null=False)
+    create_date = models.DateTimeField(null=False, auto_now_add=True)
